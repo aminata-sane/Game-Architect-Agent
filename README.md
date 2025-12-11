@@ -43,51 +43,94 @@ Ce projet démontre l'application concrète de l'**Ingénierie IA** au service d
 
 ---
 
-L'agent central orchestre les décisions : doit-il répondre avec sa connaissance interne, ou doit-il déclencher l'outil Wikipédia avant de formuler sa réponse ?
+🧠 Agent IA Orchestrateur avec Recherche Wikipédia
 
-🎯 Exemple d'utilisation
-Scénario : Le designer cherche une mécanique sonore réaliste pour un jeu dans le désert.
+Un agent autonome capable de raisonner, sélectionner ses outils, et aller chercher des informations sur Wikipédia avant de formuler sa réponse.
+Il choisit automatiquement entre :
 
-Utilisateur : "Pour rendre le jeu réaliste, je veux m'inspirer d'un vrai phénomène. Cherche sur Wikipédia ce qu'est le 'Chant des dunes' et propose-moi une mécanique de jeu sonore basée là-dessus."
+répondre avec sa connaissance interne,
 
-Réponse de l'Agent (après utilisation autonome de l'outil Wikipédia) :
+ou activer l’outil Wikipédia pour enrichir son raisonnement.
 
-"Sur la base de l'article de Wikipédia, le 'Chant des dunes' est un phénomène acoustique où le sable émet un son grave...
+🎯 Exemple d’utilisation
+Scénario
 
-Proposition de Mécanique : Le Sonar des Sables Le joueur doit écouter la fréquence du sable. Un son grave et continu indique une dune stable. Un son qui devient aigu ou saccadé signale une avalanche imminente ou la présence d'une créature fouisseuse..."
+Un sound designer cherche une mécanique sonore réaliste pour un jeu situé dans le désert.
 
-🚀 Installation et Utilisation
-Ce projet est un workflow n8n. Pour l'utiliser, vous devez avoir une instance n8n locale (via Docker recommandé).
+Utilisateur :
 
-Prérequis
-Docker installé.
+“Pour rendre le jeu réaliste, je veux m’inspirer d’un vrai phénomène.
+Cherche sur Wikipédia ce qu’est le Chant des dunes et propose-moi une mécanique de jeu sonore basée là-dessus.”
 
-Une clé API gratuite sur Groq Console.
+Réponse de l’Agent
 
-Étapes
-Clonez ce dépôt.
+(après appel autonome de l’outil Wikipédia)
 
-Lancez votre instance n8n :
+“Selon l’article Wikipédia, le Chant des dunes est un phénomène acoustique où certaines dunes émettent un son grave et vibrant lorsque le sable se met en mouvement...
 
-Bash
+🎮 Proposition de mécanique : Le Sonar des Sables
+Le joueur doit écouter la fréquence du sable.
 
-docker run -it --rm --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n
-Accédez à http://localhost:5678.
+Un son grave et continu → dune stable
 
-Dans n8n, créez un nouveau workflow, cliquez sur le menu en haut à droite > "Import from File".
+Un son aigu ou saccadé → avalanche imminente ou présence d’une créature fouisseuse
 
-Sélectionnez le fichier workflow.json présent dans ce dépôt.
+Cette mécanique renforce l’immersion tout en introduisant un gameplay basé sur l’écoute active.”
 
-Configurez vos identifiants Groq dans le nœud correspondant.
+🚀 Installation & Utilisation
 
-Lancez le Chat et commencez à créer !
+Ce projet est un workflow n8n, prêt à être importé dans votre instance locale.
+
+✅ Prérequis
+
+Docker installé
+
+Une clé API Groq (gratuite) obtenue sur Groq Console
+
+🛠️ Étapes d'installation
+1. Cloner le dépôt
+git clone <url-du-repo>
+cd <nom-du-repo>
+
+2. Lancer une instance n8n
+docker run -it --rm \
+  --name n8n \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  n8nio/n8n
+
+3. Accéder à l’interface
+
+➡️ http://localhost:5678
+
+4. Importer le workflow
+
+Menu en haut à droite
+
+Import from File
+
+Sélectionnez workflow.json
+
+5. Configurer votre API Key Groq
+
+Ouvrir le node Groq
+
+Ajouter vos identifiants
+
+Sauvegarder
+
+6. Lancer l’agent et créer !
+
+Le chat est prêt 🧩
+Testez, modifiez, connectez d’autres outils… l’agent s’adapte.
 
 <div align="center">
 
-Développé avec passion par Aminata Sané Architecte d'Intelligences : Jeu Vidéo, Immersion & Agents Autonomes
+🧑‍💻✨
+Développé avec passion par Aminata Sané
+Architecte d’Intelligences : Jeu Vidéo, Immersion & Agents Autonomes
 
 </div>
-
 
 ---
 
