@@ -1,4 +1,3 @@
-# Game-Architect-Agent
 <div align="center">
 
 # 🎮 Game-Architect-Agent
@@ -41,27 +40,10 @@ Ce projet démontre l'application concrète de l'**Ingénierie IA** au service d
 | **💬 Mémoire Contextuelle** | Utilisation d'un **Window Buffer Memory** pour se souvenir des détails du projet (titre, genre, contraintes) au fil de la conversation. |
 | **🎭 Persona Expert** | Un *System Prompt* finement calibré pour forcer l'IA à adopter une posture de Game Designer senior, structuré et technique. |
 
+
 ---
 
-## 🏗️ Architecture Technique
-
-Ce projet est construit sur une architecture **Low-Code** robuste utilisant **n8n**.
-
-```mermaid
-graph TD;
-    User(Utilisateur / Game Designer) -->|Prompt via Chat| ChatTrigger;
-    subgraph n8n Workflow
-        ChatTrigger --> AI_Agent[🤖 AI Agent Node];
-        AI_Agent <-->|Inférence Rapide| Groq(🧠 Model: Groq / Llama 3);
-        AI_Agent <-->|Stockage Contexte| Memory(💾 Window Buffer Memory);
-        AI_Agent -->|Si besoin d'info externe| Wikipedia(📚 Tool: Wikipedia Search);
-        Wikipedia -->|Retourne l'article| AI_Agent;
-    end
-    AI_Agent -->|Concept Structuré| Output(Réponse dans le Chat);
-    style AI_Agent fill:#f9f,stroke:#333,stroke-width:2px,color:#000
-    style Groq fill:#ff9980,stroke:#f66,stroke-width:2px,color:#000
-
-    L'agent central orchestre les décisions : doit-il répondre avec sa connaissance interne, ou doit-il déclencher l'outil Wikipédia avant de formuler sa réponse ?
+L'agent central orchestre les décisions : doit-il répondre avec sa connaissance interne, ou doit-il déclencher l'outil Wikipédia avant de formuler sa réponse ?
 
 🎯 Exemple d'utilisation
 Scénario : Le designer cherche une mécanique sonore réaliste pour un jeu dans le désert.
@@ -105,3 +87,28 @@ Lancez le Chat et commencez à créer !
 Développé avec passion par Aminata Sané Architecte d'Intelligences : Jeu Vidéo, Immersion & Agents Autonomes
 
 </div>
+
+
+---
+
+## 🏗️ Architecture Technique
+
+Ce projet est construit sur une architecture **Low-Code** robuste utilisant **n8n**.
+
+```mermaid
+graph TD;
+    User("Utilisateur / Game Designer") -->|Prompt via Chat| ChatTrigger;
+    
+    subgraph n8n_Workflow ["Flux de travail n8n"]
+        ChatTrigger --> AI_Agent["🤖 AI Agent Node"];
+        AI_Agent <-->|Inférence Rapide| Groq("🧠 Model: Groq / Llama 3");
+        AI_Agent <-->|Stockage Contexte| Memory("💾 Window Buffer Memory");
+        AI_Agent -->|Si besoin d'info externe| Wikipedia("📚 Tool: Wikipedia Search");
+        Wikipedia -->|Retourne l'article| AI_Agent;
+    end
+    
+    AI_Agent -->|Concept Structuré| Output("Réponse dans le Chat");
+    
+    style AI_Agent fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style Groq fill:#ff9980,stroke:#f66,stroke-width:2px,color:#000
+
