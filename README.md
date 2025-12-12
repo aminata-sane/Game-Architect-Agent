@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Tools-Wikipedia%20%26%20Memory-informational?style=for-the-badge" alt="Tools">
 </p>
 
-[Voir la démo](#-exemple-dutilisation) • [Comment ça marche ?](#%EF%B8%8F-architecture-technique) • [Installation](#-installation-et-utilisation)
+[Voir la démo](demo-agent.gif) • [Comment ça marche ?](#%EF%B8%8F-architecture-technique) • [Installation](#-installation-et-utilisation)
 
 </div>
 
