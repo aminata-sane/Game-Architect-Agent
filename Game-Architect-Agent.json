@@ -1,0 +1,140 @@
+{
+  "name": "Game-Architect-Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7122cb09-e4ff-4eb1-a880-81b5a269a28b",
+      "name": "When chat message received",
+      "webhookId": "b2ff9fc7-2a8b-446e-8003-d2f2db8232c8"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.1-8b-instant",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        240,
+        256
+      ],
+      "id": "3817d826-3d7b-412a-95cf-4ccc363a3dc2",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "8wUKUQUsn4036PGo",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Tu es un Game Designer expert et créatif. Ton rôle est d'aider à concevoir des mécaniques de jeu, des scénarios et des univers immersifs. Tes réponses doivent être structurées, techniques mais accessibles. Tu possèdes une mémoire de la conversation : utilise-la pour rebondir sur ce que l'utilisateur a dit précédemment.",
+          "enableStreaming": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        240,
+        0
+      ],
+      "id": "b8c75b9f-73a1-4469-9106-1282014d82f0",
+      "name": "AI Agent",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "retryOnFail": false,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        288,
+        400
+      ],
+      "id": "005c820a-7806-4cc0-94cb-620549ba103e",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        416,
+        240
+      ],
+      "id": "fe311dc6-e0c0-4464-ad4f-be3a4d0d2f25",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ec2a781d-5cdf-4cbc-a60c-83da935c317b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6ef6dbe897d9aef1161fb14bedbbac9b4319f610bc04d2cfbce5d9f71fd168bd"
+  },
+  "id": "CgTYThRyNoT7zKGk",
+  "tags": []
+}
